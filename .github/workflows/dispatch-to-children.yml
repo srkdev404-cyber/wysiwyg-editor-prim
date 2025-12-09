@@ -1,0 +1,41 @@
+name: Dispatch Version to Child Repos
+ 
+on:
+  release:
+    types: [published]
+ 
+permissions:
+  contents: read
+ 
+jobs:
+  send_version:
+    runs-on: ubuntu-latest
+    environment: PAT   # <- ensures environment secrets are available
+ 
+    steps:
+      # Step 1: Extract version from release tag
+      - name: Extract version from tag
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${VERSION#v}"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+ 
+      # Step 2: Dispatch to Craft-Froala-WYSIWYG-A
+      - name: Dispatch to Craft-Froala-WYSIWYG-A
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT }}           # <- updated token name
+          repository: rajani0406/Craft-Froala-WYSIWYG-A
+          event-type: sync-version
+          client-payload: |
+            {"version": "${{ env.VERSION }}"}
+ 
+      # Step 3: Dispatch to yii2-froala-editor-B
+      - name: Dispatch to yii2-froala-editor-B
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT }}           # <- updated token name
+          repository: rajani0406/yii2-froala-editor-B
+          event-type: sync-version
+          client-payload: |
+            {"version": "${{ env.VERSION }}"}
