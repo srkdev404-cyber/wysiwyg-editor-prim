@@ -25,17 +25,17 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT }}           # <- updated token name
-          repository: rajani0406/Craft-Froala-WYSIWYG-A
+          repository: srkdev404-cyber/Craft-Froala-WYSIWYG-A
           event-type: sync-version
           client-payload: |
             {"version": "${{ env.VERSION }}"}
  
-      # Step 3: Dispatch to yii2-froala-editor-B
-      - name: Dispatch to yii2-froala-editor-B
+      # Step 3: Dispatch to yii2-froala-editor-1
+      - name: Dispatch to yii2-froala-editor-1
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT }}           # <- updated token name
-          repository: rajani0406/yii2-froala-editor-B
+          repository: srkdev404-cyber/yii2-froala-editor-1
           event-type: sync-version
           client-payload: |
             {"version": "${{ env.VERSION }}"}
