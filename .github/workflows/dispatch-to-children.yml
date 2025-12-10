@@ -20,12 +20,12 @@ jobs:
           VERSION="${VERSION#v}"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
  
-      # Step 2: Dispatch to Craft-Froala-WYSIWYG-A
-      - name: Dispatch to Craft-Froala-WYSIWYG-A
+      # Step 2: Dispatch to wysiwyg-editor-php-sdk-A
+      - name: Dispatch to wysiwyg-editor-php-sdk-A
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT }}           # <- updated token name
-          repository: srkdev404-cyber/Craft-Froala-WYSIWYG-A
+          repository: srkdev404-cyber/wysiwyg-editor-php-sdk-A
           event-type: sync-version
           client-payload: |
             {"version": "${{ env.VERSION }}"}
