@@ -62,7 +62,6 @@ Using Froala Editor from CDN is the easiest way to install it and we recommend u
 ```
 
 
-
 ### Load from CDN as an AMD module
 Froala Editor is compatible with AMD module loaders such as RequireJS. The following example shows how to load it along with the Algin plugin from CDN using RequireJS.
 ```html
