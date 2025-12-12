@@ -20,12 +20,12 @@ jobs:
           VERSION="${VERSION#v}"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
  
-      # Step 2: Dispatch to wysiwyg-editor-php-sdk-A
-      - name: Dispatch to wysiwyg-editor-php-sdk-A
+      # Step 2: Dispatch to wysiwyg-editor-php-sdk-3
+      - name: Dispatch to wysiwyg-editor-php-sdk-3
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT }}           # <- updated token name
-          repository: srkdev404-cyber/wysiwyg-editor-php-sdk-A
+          repository: srkdev404-cyber/wysiwyg-editor-php-sdk-3
           event-type: sync-version
           client-payload: |
             {"version": "${{ env.VERSION }}"}
